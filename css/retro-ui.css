@@ -1,0 +1,390 @@
+/*
+ * Retro UI - Vanilla CSS
+ * A pixel-perfect retro gaming UI library
+ * No build step required - just include and use!
+ */
+
+/* ================================
+ * FONT FACE DECLARATIONS
+ * ================================ */
+@font-face {
+  font-family: 'Minecraft';
+  src: url('../fonts/Minecraft.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Minecraft';
+  src: url('../fonts/Minecraft-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* ================================
+ * CSS CUSTOM PROPERTIES (THEME SYSTEM)
+ * ================================ */
+:root {
+  /* Primary theme colors */
+  --retro-primary-bg: #c381b5;
+  --retro-primary-text: #fefcd0;
+  --retro-primary-shadow: #fefcd0;
+  
+  /* Secondary theme colors */
+  --retro-secondary-bg: #fefcd0;
+  --retro-secondary-text: #000000;
+  --retro-secondary-shadow: #c381b5;
+  
+  /* Component-specific colors */
+  --retro-button-bg: var(--retro-primary-bg);
+  --retro-button-text: var(--retro-primary-text);
+  --retro-button-shadow: var(--retro-primary-shadow);
+  --retro-button-border: #000000;
+  
+  --retro-card-bg: #ffffff;
+  --retro-card-text: #000000;
+  --retro-card-shadow: #000000;
+  --retro-card-border: #000000;
+  
+  --retro-input-bg: #ffffff;
+  --retro-input-text: #000000;
+  --retro-input-border: #000000;
+  
+  /* Typography */
+  --retro-font-family: 'Minecraft', 'Courier New', monospace;
+  --retro-font-size: 16px;
+  --retro-line-height: 1.4;
+  
+  /* Spacing */
+  --retro-spacing-xs: 4px;
+  --retro-spacing-sm: 8px;
+  --retro-spacing-md: 16px;
+  --retro-spacing-lg: 24px;
+  --retro-spacing-xl: 32px;
+  
+  /* Border properties */
+  --retro-border-width: 5px;
+  --retro-border-radius: 0px; /* Pixel perfect - no rounded corners */
+  
+  /* Shadows */
+  --retro-shadow-offset: 2px;
+  --retro-shadow-blur: 0px;
+  
+  /* Pixel border SVG */
+  --retro-pixel-border: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M3 1h1v1h-1zM4 1h1v1h-1zM2 2h1v1h-1zM5 2h1v1h-1zM1 3h1v1h-1zM6 3h1v1h-1zM1 4h1v1h-1zM6 4h1v1h-1zM2 5h1v1h-1zM5 5h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1z' fill='%23000000'/%3E%3C/svg%3E");
+}
+
+/* ================================
+ * BASE STYLES
+ * ================================ */
+.retro-ui {
+  font-family: var(--retro-font-family);
+  font-size: var(--retro-font-size);
+  line-height: var(--retro-line-height);
+  box-sizing: border-box;
+}
+
+.retro-ui *,
+.retro-ui *::before,
+.retro-ui *::after {
+  box-sizing: inherit;
+}
+
+/* ================================
+ * BUTTON COMPONENT
+ * ================================ */
+.retro-button,
+button[data-retro],
+input[type="button"][data-retro],
+input[type="submit"][data-retro],
+input[type="reset"][data-retro] {
+  display: inline-block;
+  position: relative;
+  padding: var(--retro-spacing-sm) var(--retro-spacing-md);
+  margin: var(--retro-spacing-xs);
+  
+  font-family: var(--retro-font-family);
+  font-size: var(--retro-font-size);
+  
+  background-color: var(--retro-button-bg);
+  color: var(--retro-button-text);
+  
+  border: var(--retro-border-width) solid var(--retro-button-border);
+  border-image: var(--retro-pixel-border);
+  border-image-slice: 3;
+  border-image-width: 2;
+  border-image-repeat: stretch;
+  border-image-outset: 2;
+  
+  box-shadow: 
+    var(--retro-shadow-offset) var(--retro-shadow-offset) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-button-shadow),
+    calc(-1 * var(--retro-shadow-offset)) calc(-1 * var(--retro-shadow-offset)) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-button-bg);
+  
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: transform 0.1s ease;
+  
+  /* Prevent text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.retro-button:hover,
+button[data-retro]:hover,
+input[type="button"][data-retro]:hover,
+input[type="submit"][data-retro]:hover,
+input[type="reset"][data-retro]:hover {
+  filter: brightness(1.1);
+}
+
+.retro-button:active,
+button[data-retro]:active,
+input[type="button"][data-retro]:active,
+input[type="submit"][data-retro]:active,
+input[type="reset"][data-retro]:active {
+  transform: translateY(var(--retro-shadow-offset));
+  box-shadow: 
+    var(--retro-shadow-offset) var(--retro-shadow-offset) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-button-bg),
+    calc(-1 * var(--retro-shadow-offset)) calc(-1 * var(--retro-shadow-offset)) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-button-bg);
+}
+
+.retro-button:focus,
+button[data-retro]:focus,
+input[type="button"][data-retro]:focus,
+input[type="submit"][data-retro]:focus,
+input[type="reset"][data-retro]:focus {
+  outline: 2px solid var(--retro-button-shadow);
+  outline-offset: 2px;
+}
+
+/* Button variants */
+.retro-button.secondary,
+button[data-retro="secondary"] {
+  --retro-button-bg: var(--retro-secondary-bg);
+  --retro-button-text: var(--retro-secondary-text);
+  --retro-button-shadow: var(--retro-secondary-shadow);
+}
+
+/* ================================
+ * CARD COMPONENT
+ * ================================ */
+.retro-card,
+.card[data-retro],
+article[data-retro] {
+  display: block;
+  margin: var(--retro-spacing-md);
+  padding: var(--retro-spacing-md);
+  
+  background-color: var(--retro-card-bg);
+  color: var(--retro-card-text);
+  
+  border: var(--retro-border-width) solid var(--retro-card-border);
+  border-image: var(--retro-pixel-border);
+  border-image-slice: 3;
+  border-image-width: 2;
+  border-image-repeat: stretch;
+  border-image-outset: 2;
+  
+  box-shadow: 
+    var(--retro-shadow-offset) var(--retro-shadow-offset) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-card-shadow),
+    calc(-1 * var(--retro-shadow-offset)) calc(-1 * var(--retro-shadow-offset)) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-card-bg);
+  
+  font-family: var(--retro-font-family);
+}
+
+/* ================================
+ * INPUT COMPONENTS
+ * ================================ */
+.retro-input,
+input[data-retro],
+input[type="text"][data-retro],
+input[type="email"][data-retro],
+input[type="password"][data-retro],
+input[type="number"][data-retro],
+input[type="search"][data-retro],
+input[type="tel"][data-retro],
+input[type="url"][data-retro] {
+  display: inline-block;
+  width: auto;
+  padding: var(--retro-spacing-sm) var(--retro-spacing-md);
+  margin: var(--retro-spacing-xs);
+  
+  font-family: var(--retro-font-family);
+  font-size: var(--retro-font-size);
+  
+  background-color: var(--retro-input-bg);
+  color: var(--retro-input-text);
+  
+  border: var(--retro-border-width) solid var(--retro-input-border);
+  border-image: var(--retro-pixel-border);
+  border-image-slice: 3;
+  border-image-width: 2;
+  border-image-repeat: stretch;
+  border-image-outset: 2;
+  
+  box-shadow: 
+    var(--retro-shadow-offset) var(--retro-shadow-offset) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-input-bg),
+    calc(-1 * var(--retro-shadow-offset)) calc(-1 * var(--retro-shadow-offset)) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-input-bg);
+}
+
+.retro-input:focus,
+input[data-retro]:focus {
+  outline: 2px solid var(--retro-primary-bg);
+  outline-offset: 2px;
+}
+
+/* ================================
+ * TEXTAREA COMPONENT
+ * ================================ */
+.retro-textarea,
+textarea[data-retro] {
+  display: block;
+  width: 100%;
+  min-height: 100px;
+  padding: var(--retro-spacing-sm) var(--retro-spacing-md);
+  margin: var(--retro-spacing-xs);
+  
+  font-family: var(--retro-font-family);
+  font-size: var(--retro-font-size);
+  line-height: var(--retro-line-height);
+  
+  background-color: var(--retro-input-bg);
+  color: var(--retro-input-text);
+  
+  border: var(--retro-border-width) solid var(--retro-input-border);
+  border-image: var(--retro-pixel-border);
+  border-image-slice: 3;
+  border-image-width: 2;
+  border-image-repeat: stretch;
+  border-image-outset: 2;
+  
+  box-shadow: 
+    var(--retro-shadow-offset) var(--retro-shadow-offset) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-input-bg),
+    calc(-1 * var(--retro-shadow-offset)) calc(-1 * var(--retro-shadow-offset)) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-input-bg);
+  
+  resize: vertical;
+}
+
+.retro-textarea:focus,
+textarea[data-retro]:focus {
+  outline: 2px solid var(--retro-primary-bg);
+  outline-offset: 2px;
+}
+
+/* ================================
+ * PROGRESS BAR COMPONENT
+ * ================================ */
+.retro-progress {
+  --progress: 0;
+  
+  display: block;
+  width: 100%;
+  height: 32px;
+  margin: var(--retro-spacing-md);
+  
+  background-color: var(--retro-secondary-bg);
+  
+  border: var(--retro-border-width) solid var(--retro-input-border);
+  border-image: var(--retro-pixel-border);
+  border-image-slice: 3;
+  border-image-width: 2;
+  border-image-repeat: stretch;
+  border-image-outset: 2;
+  
+  box-shadow: 
+    var(--retro-shadow-offset) var(--retro-shadow-offset) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-card-shadow),
+    calc(-1 * var(--retro-shadow-offset)) calc(-1 * var(--retro-shadow-offset)) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-secondary-bg);
+  
+  position: relative;
+  overflow: hidden;
+}
+
+.retro-progress::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: calc(var(--progress) * 1%);
+  background-color: var(--retro-primary-bg);
+  transition: width 0.3s ease;
+}
+
+.retro-progress[data-progress] {
+  --progress: attr(data-progress);
+}
+
+/* ================================
+ * UTILITY CLASSES
+ * ================================ */
+.retro-font {
+  font-family: var(--retro-font-family);
+}
+
+.retro-text-center {
+  text-align: center;
+}
+
+.retro-text-left {
+  text-align: left;
+}
+
+.retro-text-right {
+  text-align: right;
+}
+
+.retro-m-0 { margin: 0; }
+.retro-m-1 { margin: var(--retro-spacing-xs); }
+.retro-m-2 { margin: var(--retro-spacing-sm); }
+.retro-m-3 { margin: var(--retro-spacing-md); }
+.retro-m-4 { margin: var(--retro-spacing-lg); }
+.retro-m-5 { margin: var(--retro-spacing-xl); }
+
+.retro-p-0 { padding: 0; }
+.retro-p-1 { padding: var(--retro-spacing-xs); }
+.retro-p-2 { padding: var(--retro-spacing-sm); }
+.retro-p-3 { padding: var(--retro-spacing-md); }
+.retro-p-4 { padding: var(--retro-spacing-lg); }
+.retro-p-5 { padding: var(--retro-spacing-xl); }
+
+/* ================================
+ * RESPONSIVE DESIGN
+ * ================================ */
+@media (max-width: 768px) {
+  :root {
+    --retro-font-size: 14px;
+    --retro-spacing-md: 12px;
+    --retro-spacing-lg: 18px;
+  }
+  
+  .retro-button,
+  button[data-retro] {
+    padding: var(--retro-spacing-xs) var(--retro-spacing-sm);
+  }
+  
+  .retro-card,
+  .card[data-retro] {
+    margin: var(--retro-spacing-sm);
+    padding: var(--retro-spacing-sm);
+  }
+}
+
+/* ================================
+ * PRINT STYLES
+ * ================================ */
+@media print {
+  .retro-button,
+  button[data-retro] {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+  
+  .retro-card,
+  .card[data-retro] {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}

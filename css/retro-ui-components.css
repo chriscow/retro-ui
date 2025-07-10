@@ -1,0 +1,425 @@
+/*
+ * Retro UI - Interactive Components
+ * Advanced components using HTML5 semantics with CSS styling
+ */
+
+/* ================================
+ * DROPDOWN COMPONENT (using details/summary)
+ * ================================ */
+details,
+.retro-dropdown,
+details[data-retro-dropdown] {
+  position: relative;
+  display: inline-block;
+  margin: var(--retro-spacing-xs);
+}
+
+details summary,
+.retro-dropdown summary,
+details[data-retro-dropdown] summary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--retro-spacing-sm);
+  
+  padding: var(--retro-spacing-sm) var(--retro-spacing-md);
+  
+  font-family: var(--retro-font-family);
+  font-size: var(--retro-font-size);
+  
+  background-color: var(--retro-button-bg);
+  color: var(--retro-button-text);
+  
+  border: var(--retro-border-width) solid var(--retro-button-border);
+  border-image: var(--retro-pixel-border);
+  border-image-slice: 3;
+  border-image-width: 2;
+  border-image-repeat: stretch;
+  border-image-outset: 2;
+  
+  box-shadow: 
+    var(--retro-shadow-offset) var(--retro-shadow-offset) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-button-shadow),
+    calc(-1 * var(--retro-shadow-offset)) calc(-1 * var(--retro-shadow-offset)) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-button-bg);
+  
+  cursor: pointer;
+  list-style: none;
+  transition: transform 0.1s ease;
+  
+  /* Hide default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+details summary::-webkit-details-marker,
+.retro-dropdown summary::-webkit-details-marker,
+details[data-retro-dropdown] summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary::after,
+.retro-dropdown summary::after,
+details[data-retro-dropdown] summary::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background-color: currentColor;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cpath d='M127 21h44v43h43v42h43v43h42v43h43v42h42v44h-42v43h-43v42h-42v43h-43v42h-43v43h-44z' fill='currentColor'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cpath d='M127 21h44v43h43v42h43v43h42v43h43v42h42v44h-42v43h-43v42h-42v43h-43v42h-43v43h-44z' fill='currentColor'/%3E%3C/svg%3E");
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  transition: transform 0.2s ease;
+}
+
+details[open] summary::after,
+.retro-dropdown[open] summary::after,
+details[data-retro-dropdown][open] summary::after {
+  transform: rotate(90deg);
+}
+
+details summary:hover,
+.retro-dropdown summary:hover,
+details[data-retro-dropdown] summary:hover {
+  filter: brightness(1.1);
+}
+
+details summary:active,
+.retro-dropdown summary:active,
+details[data-retro-dropdown] summary:active {
+  transform: translateY(var(--retro-shadow-offset));
+  box-shadow: 
+    var(--retro-shadow-offset) var(--retro-shadow-offset) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-button-bg),
+    calc(-1 * var(--retro-shadow-offset)) calc(-1 * var(--retro-shadow-offset)) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-button-bg);
+}
+
+.retro-dropdown-content,
+details[data-retro-dropdown] .retro-dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  
+  margin-top: var(--retro-spacing-xs);
+  padding: var(--retro-spacing-sm);
+  
+  background-color: var(--retro-card-bg);
+  color: var(--retro-card-text);
+  
+  border: var(--retro-border-width) solid var(--retro-card-border);
+  border-image: var(--retro-pixel-border);
+  border-image-slice: 3;
+  border-image-width: 2;
+  border-image-repeat: stretch;
+  border-image-outset: 2;
+  
+  box-shadow: 
+    var(--retro-shadow-offset) var(--retro-shadow-offset) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-card-shadow),
+    calc(-1 * var(--retro-shadow-offset)) calc(-1 * var(--retro-shadow-offset)) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-card-bg);
+  
+  min-width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+  
+  animation: retro-dropdown-appear 0.2s ease;
+}
+
+@keyframes retro-dropdown-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.retro-dropdown-item,
+details[data-retro-dropdown] .retro-dropdown-item {
+  display: block;
+  padding: var(--retro-spacing-sm) var(--retro-spacing-md);
+  color: inherit;
+  text-decoration: none;
+  font-family: var(--retro-font-family);
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.retro-dropdown-item:hover,
+details[data-retro-dropdown] .retro-dropdown-item:hover {
+  background-color: var(--retro-primary-bg);
+  color: var(--retro-primary-text);
+}
+
+.retro-dropdown-separator,
+details[data-retro-dropdown] .retro-dropdown-separator {
+  height: 1px;
+  background-color: var(--retro-card-border);
+  margin: var(--retro-spacing-xs) 0;
+}
+
+.retro-dropdown-label,
+details[data-retro-dropdown] .retro-dropdown-label {
+  font-weight: bold;
+  padding: var(--retro-spacing-xs) var(--retro-spacing-md);
+  font-size: 0.9em;
+  color: var(--retro-secondary-text);
+}
+
+/* ================================
+ * ACCORDION COMPONENT (using details/summary)
+ * ================================ */
+.retro-accordion,
+.retro-accordion-group {
+  margin: var(--retro-spacing-md);
+}
+
+.retro-accordion-item,
+details[data-retro-accordion] {
+  margin-bottom: var(--retro-spacing-sm);
+  
+  border: var(--retro-border-width) solid var(--retro-card-border);
+  border-image: var(--retro-pixel-border);
+  border-image-slice: 3;
+  border-image-width: 2;
+  border-image-repeat: stretch;
+  border-image-outset: 2;
+  
+  box-shadow: 
+    var(--retro-shadow-offset) var(--retro-shadow-offset) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-card-shadow),
+    calc(-1 * var(--retro-shadow-offset)) calc(-1 * var(--retro-shadow-offset)) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-card-bg);
+  
+  background-color: var(--retro-card-bg);
+}
+
+.retro-accordion-item summary,
+details[data-retro-accordion] summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  padding: var(--retro-spacing-md);
+  
+  font-family: var(--retro-font-family);
+  font-size: var(--retro-font-size);
+  font-weight: bold;
+  
+  background-color: var(--retro-secondary-bg);
+  color: var(--retro-secondary-text);
+  
+  cursor: pointer;
+  list-style: none;
+  
+  border-bottom: var(--retro-border-width) solid var(--retro-card-border);
+  
+  transition: background-color 0.2s ease;
+  
+  /* Hide default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.retro-accordion-item summary::-webkit-details-marker,
+details[data-retro-accordion] summary::-webkit-details-marker {
+  display: none;
+}
+
+.retro-accordion-item summary::after,
+details[data-retro-accordion] summary::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cpath d='M127 21h44v43h43v42h43v43h42v43h43v42h42v44h-42v43h-43v42h-42v43h-43v42h-43v43h-44z' fill='currentColor'/%3E%3C/svg%3E");
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cpath d='M127 21h44v43h43v42h43v43h42v43h43v42h42v44h-42v43h-43v42h-42v43h-43v42h-43v43h-44z' fill='currentColor'/%3E%3C/svg%3E");
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.retro-accordion-item[open] summary::after,
+details[data-retro-accordion][open] summary::after {
+  transform: rotate(90deg);
+}
+
+.retro-accordion-item summary:hover,
+details[data-retro-accordion] summary:hover {
+  background-color: var(--retro-primary-bg);
+  color: var(--retro-primary-text);
+}
+
+.retro-accordion-item[open] summary,
+details[data-retro-accordion][open] summary {
+  border-bottom-color: var(--retro-card-border);
+}
+
+.retro-accordion-content,
+details[data-retro-accordion] .retro-accordion-content {
+  padding: var(--retro-spacing-md);
+  font-family: var(--retro-font-family);
+  line-height: var(--retro-line-height);
+  
+  animation: retro-accordion-expand 0.3s ease;
+}
+
+@keyframes retro-accordion-expand {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================
+ * MODAL/POPUP COMPONENT (using :target)
+ * ================================ */
+.retro-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.retro-modal:target {
+  opacity: 1;
+  visibility: visible;
+}
+
+.retro-modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  
+  background-color: var(--retro-card-bg);
+  color: var(--retro-card-text);
+  
+  border: var(--retro-border-width) solid var(--retro-card-border);
+  border-image: var(--retro-pixel-border);
+  border-image-slice: 3;
+  border-image-width: 2;
+  border-image-repeat: stretch;
+  border-image-outset: 2;
+  
+  box-shadow: 
+    var(--retro-shadow-offset) var(--retro-shadow-offset) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-card-shadow),
+    calc(-1 * var(--retro-shadow-offset)) calc(-1 * var(--retro-shadow-offset)) var(--retro-shadow-blur) var(--retro-shadow-offset) var(--retro-card-bg);
+  
+  overflow-y: auto;
+  
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.retro-modal:target .retro-modal-content {
+  transform: scale(1);
+}
+
+.retro-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--retro-spacing-md);
+  
+  background-color: var(--retro-secondary-bg);
+  color: var(--retro-secondary-text);
+  
+  border-bottom: var(--retro-border-width) solid var(--retro-card-border);
+  
+  font-family: var(--retro-font-family);
+  font-weight: bold;
+}
+
+.retro-modal-title {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.retro-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: inherit;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.retro-modal-close:hover {
+  color: var(--retro-primary-bg);
+}
+
+.retro-modal-body {
+  padding: var(--retro-spacing-md);
+  font-family: var(--retro-font-family);
+  line-height: var(--retro-line-height);
+}
+
+.retro-modal-footer {
+  padding: var(--retro-spacing-md);
+  text-align: right;
+  
+  border-top: var(--retro-border-width) solid var(--retro-card-border);
+  
+  background-color: var(--retro-secondary-bg);
+}
+
+/* ================================
+ * RESPONSIVE ADJUSTMENTS
+ * ================================ */
+@media (max-width: 768px) {
+  .retro-dropdown-content,
+  details[data-retro-dropdown] .retro-dropdown-content {
+    min-width: 150px;
+    max-height: 200px;
+  }
+  
+  .retro-accordion-item summary,
+  details[data-retro-accordion] summary {
+    padding: var(--retro-spacing-sm);
+  }
+  
+  .retro-accordion-content,
+  details[data-retro-accordion] .retro-accordion-content {
+    padding: var(--retro-spacing-sm);
+  }
+  
+  .retro-modal-content {
+    max-width: 95%;
+    max-height: 95%;
+  }
+  
+  .retro-modal-header,
+  .retro-modal-body,
+  .retro-modal-footer {
+    padding: var(--retro-spacing-sm);
+  }
+}

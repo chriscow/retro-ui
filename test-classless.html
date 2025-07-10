@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classless Test - Retro UI</title>
+    <link rel="stylesheet" href="css/retro-ui-classless.css">
+    <link rel="stylesheet" href="css/retro-ui-components.css">
+    <link rel="stylesheet" href="css/retro-ui-utilities.css">
+</head>
+<body>
+    <header>
+        <h1>🎮 Classless Test</h1>
+        <p>Testing semantic HTML with automatic retro styling</p>
+    </header>
+    
+    <main>
+        <section>
+            <h2>Pure Semantic HTML</h2>
+            <p>This content uses NO classes, just semantic HTML elements:</p>
+            
+            <article>
+                <h3>Game Status</h3>
+                <p>All elements should have retro styling automatically.</p>
+                <button>Start Game</button>
+                <button class="secondary">Settings</button>
+            </article>
+            
+            <aside>
+                <h3>Quick Actions</h3>
+                <input type="text" placeholder="Player name">
+                <textarea placeholder="Notes"></textarea>
+                <progress value="75" max="100">75%</progress>
+            </aside>
+            
+            <details>
+                <summary>Game Menu</summary>
+                <div class="retro-dropdown-content">
+                    <button class="retro-dropdown-item">New Game</button>
+                    <button class="retro-dropdown-item">Continue</button>
+                    <button class="retro-dropdown-item">Quit</button>
+                </div>
+            </details>
+        </section>
+        
+        <article class="highlight">
+            <h2>✅ Success!</h2>
+            <p>If you see retro-styled components above, the classless approach is working perfectly!</p>
+            <p>This article uses the "highlight" variant class with semantic <code>&lt;article&gt;</code> element.</p>
+        </article>
+    </main>
+    
+    <footer>
+        <p>🎮 Semantic HTML + Retro Styling = ❤️</p>
+    </footer>
+    
+    <script src="js/retro-ui.js"></script>
+</body>
+</html>

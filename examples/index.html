@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro UI - Vanilla JavaScript Examples</title>
+    <link rel="stylesheet" href="../css/retro-ui.css">
+    <link rel="stylesheet" href="../css/retro-ui-components.css">
+    <style>
+        body {
+            font-family: var(--retro-font-family);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: var(--retro-primary-bg);
+            border-bottom: 3px solid var(--retro-primary-bg);
+            padding-bottom: 10px;
+        }
+        
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        
+        .demo-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .theme-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .progress-demo {
+            margin: 20px 0;
+        }
+        
+        .color-input {
+            margin: 5px;
+            padding: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            .theme-selector {
+                position: static;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="retro-ui">
+    <div class="container">
+        <!-- Theme Selector -->
+        <div class="theme-selector">
+            <details class="retro-dropdown">
+                <summary>🎨 Theme</summary>
+                <div class="retro-dropdown-content">
+                    <button class="retro-dropdown-item" onclick="setTheme('default')">Default</button>
+                    <button class="retro-dropdown-item" onclick="setTheme('ocean')">Ocean</button>
+                    <button class="retro-dropdown-item" onclick="setTheme('forest')">Forest</button>
+                    <button class="retro-dropdown-item" onclick="setTheme('sunset')">Sunset</button>
+                    <div class="retro-dropdown-separator"></div>
+                    <button class="retro-dropdown-item" onclick="showCustomTheme()">Custom</button>
+                </div>
+            </details>
+        </div>
+
+        <!-- Header -->
+        <header class="retro-card">
+            <h1 class="retro-text-center">🎮 Retro UI - Vanilla JavaScript</h1>
+            <p class="retro-text-center">A pixel-perfect retro gaming UI library that works without any build step!</p>
+        </header>
+
+        <!-- Buttons Section -->
+        <section class="section">
+            <h2>Buttons</h2>
+            <div class="demo-section">
+                <div>
+                    <button class="retro-button">Primary Button</button>
+                    <button class="retro-button secondary">Secondary Button</button>
+                    <button class="retro-button" disabled>Disabled Button</button>
+                </div>
+                
+                <div>
+                    <input type="button" class="retro-button" value="Input Button">
+                    <input type="submit" class="retro-button" value="Submit">
+                    <input type="reset" class="retro-button secondary" value="Reset">
+                </div>
+            </div>
+            
+            <div class="code-example">
+&lt;button class="retro-button"&gt;Primary Button&lt;/button&gt;
+&lt;button class="retro-button secondary"&gt;Secondary Button&lt;/button&gt;
+&lt;button class="retro-button" disabled&gt;Disabled Button&lt;/button&gt;
+
+&lt;!-- Or use data attributes --&gt;
+&lt;button data-retro&gt;Primary Button&lt;/button&gt;
+&lt;button data-retro="secondary"&gt;Secondary Button&lt;/button&gt;
+            </div>
+        </section>
+
+        <!-- Cards Section -->
+        <section class="section">
+            <h2>Cards</h2>
+            <div class="example-grid">
+                <div class="retro-card">
+                    <h3>Basic Card</h3>
+                    <p>This is a basic card with some content. Cards are perfect for displaying information in a structured way.</p>
+                    <button class="retro-button">Action</button>
+                </div>
+                
+                <article class="retro-card">
+                    <h3>Article Card</h3>
+                    <p>Using semantic HTML with <code>&lt;article&gt;</code> tag. The styling works the same way!</p>
+                    <button class="retro-button secondary">Read More</button>
+                </article>
+                
+                <div class="retro-card">
+                    <h3>Card with Form</h3>
+                    <input type="text" class="retro-input" placeholder="Enter text">
+                    <textarea class="retro-textarea" placeholder="Enter description"></textarea>
+                    <button class="retro-button">Submit</button>
+                </div>
+            </div>
+            
+            <div class="code-example">
+&lt;div class="retro-card"&gt;
+    &lt;h3&gt;Card Title&lt;/h3&gt;
+    &lt;p&gt;Card content goes here...&lt;/p&gt;
+    &lt;button class="retro-button"&gt;Action&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Or use semantic HTML --&gt;
+&lt;article data-retro&gt;
+    &lt;h3&gt;Article Title&lt;/h3&gt;
+    &lt;p&gt;Article content...&lt;/p&gt;
+&lt;/article&gt;
+            </div>
+        </section>
+
+        <!-- Form Elements Section -->
+        <section class="section">
+            <h2>Form Elements</h2>
+            <div class="retro-card">
+                <h3>Form Demo</h3>
+                <form onsubmit="return false;">
+                    <div class="retro-m-2">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" class="retro-input" placeholder="Enter your name">
+                    </div>
+                    
+                    <div class="retro-m-2">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" class="retro-input" placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="retro-m-2">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" class="retro-input" placeholder="Enter password">
+                    </div>
+                    
+                    <div class="retro-m-2">
+                        <label for="message">Message:</label>
+                        <textarea id="message" class="retro-textarea" placeholder="Enter your message"></textarea>
+                    </div>
+                    
+                    <div class="retro-m-2">
+                        <button type="submit" class="retro-button">Submit</button>
+                        <button type="reset" class="retro-button secondary">Reset</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="code-example">
+&lt;input type="text" class="retro-input" placeholder="Enter text"&gt;
+&lt;input type="email" data-retro placeholder="Enter email"&gt;
+&lt;textarea class="retro-textarea" placeholder="Enter message"&gt;&lt;/textarea&gt;
+&lt;textarea data-retro placeholder="Enter description"&gt;&lt;/textarea&gt;
+            </div>
+        </section>
+
+        <!-- Progress Bar Section -->
+        <section class="section">
+            <h2>Progress Bars</h2>
+            <div class="progress-demo">
+                <div class="retro-progress" style="--progress: 25" data-progress="25" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="retro-progress" style="--progress: 50" data-progress="50" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="retro-progress" style="--progress: 75" data-progress="75" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="retro-progress" style="--progress: 100" data-progress="100" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                
+                <div class="retro-m-3">
+                    <button class="retro-button" onclick="animateProgress()">Animate Progress</button>
+                    <button class="retro-button secondary" onclick="resetProgress()">Reset</button>
+                </div>
+            </div>
+            
+            <div class="code-example">
+&lt;div class="retro-progress" style="--progress: 75" data-progress="75" 
+     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"&gt;&lt;/div&gt;
+
+&lt;!-- JavaScript API --&gt;
+&lt;script&gt;
+    // Update progress
+    RetroUI.ProgressBar.update('.retro-progress', 75);
+    
+    // Animate progress
+    RetroUI.ProgressBar.animate('.retro-progress', 90, 1000);
+&lt;/script&gt;
+            </div>
+        </section>
+
+        <!-- Dropdown Section -->
+        <section class="section">
+            <h2>Dropdowns</h2>
+            <div class="demo-section">
+                <div>
+                    <details class="retro-dropdown">
+                        <summary>🍔 Menu</summary>
+                        <div class="retro-dropdown-content">
+                            <div class="retro-dropdown-label">Actions</div>
+                            <button class="retro-dropdown-item">New File</button>
+                            <button class="retro-dropdown-item">Open</button>
+                            <button class="retro-dropdown-item">Save</button>
+                            <div class="retro-dropdown-separator"></div>
+                            <button class="retro-dropdown-item">Exit</button>
+                        </div>
+                    </details>
+                    
+                    <details class="retro-dropdown">
+                        <summary>⚙️ Settings</summary>
+                        <div class="retro-dropdown-content">
+                            <button class="retro-dropdown-item">Preferences</button>
+                            <button class="retro-dropdown-item">Theme</button>
+                            <button class="retro-dropdown-item">Language</button>
+                        </div>
+                    </details>
+                </div>
+            </div>
+            
+            <div class="code-example">
+&lt;details class="retro-dropdown"&gt;
+    &lt;summary&gt;Menu&lt;/summary&gt;
+    &lt;div class="retro-dropdown-content"&gt;
+        &lt;div class="retro-dropdown-label"&gt;Actions&lt;/div&gt;
+        &lt;button class="retro-dropdown-item"&gt;New File&lt;/button&gt;
+        &lt;button class="retro-dropdown-item"&gt;Open&lt;/button&gt;
+        &lt;div class="retro-dropdown-separator"&gt;&lt;/div&gt;
+        &lt;button class="retro-dropdown-item"&gt;Exit&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/details&gt;
+
+&lt;!-- Or use data attributes --&gt;
+&lt;details data-retro-dropdown&gt;
+    &lt;summary&gt;Menu&lt;/summary&gt;
+    &lt;div class="retro-dropdown-content"&gt;
+        &lt;button class="retro-dropdown-item"&gt;Item 1&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/details&gt;
+            </div>
+        </section>
+
+        <!-- Accordion Section -->
+        <section class="section">
+            <h2>Accordions</h2>
+            <div class="retro-accordion-group">
+                <details class="retro-accordion-item">
+                    <summary>🎮 Getting Started</summary>
+                    <div class="retro-accordion-content">
+                        <p>Welcome to Retro UI! This library provides pixel-perfect retro gaming components that work without any build step.</p>
+                        <p>Just include the CSS and optional JavaScript files, and you're ready to go!</p>
+                    </div>
+                </details>
+                
+                <details class="retro-accordion-item">
+                    <summary>📦 Installation</summary>
+                    <div class="retro-accordion-content">
+                        <p>Simply download the files and include them in your HTML:</p>
+                        <pre>&lt;link rel="stylesheet" href="retro-ui.css"&gt;
+&lt;script src="retro-ui.js"&gt;&lt;/script&gt;</pre>
+                    </div>
+                </details>
+                
+                <details class="retro-accordion-item">
+                    <summary>🎨 Theming</summary>
+                    <div class="retro-accordion-content">
+                        <p>Customize the look using CSS custom properties:</p>
+                        <pre>:root {
+  --retro-primary-bg: #your-color;
+  --retro-primary-text: #your-text-color;
+}</pre>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="code-example">
+&lt;details class="retro-accordion-item"&gt;
+    &lt;summary&gt;Section Title&lt;/summary&gt;
+    &lt;div class="retro-accordion-content"&gt;
+        &lt;p&gt;Section content goes here...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/details&gt;
+
+&lt;!-- Or use data attributes --&gt;
+&lt;details data-retro-accordion&gt;
+    &lt;summary&gt;Section Title&lt;/summary&gt;
+    &lt;div class="retro-accordion-content"&gt;
+        &lt;p&gt;Content...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/details&gt;
+            </div>
+        </section>
+
+        <!-- Modal Section -->
+        <section class="section">
+            <h2>Modals</h2>
+            <div class="demo-section">
+                <div>
+                    <a href="#modal1" class="retro-button">Open Modal</a>
+                    <button class="retro-button secondary" onclick="RetroUI.Modal.open('modal2')">Open via JS</button>
+                </div>
+            </div>
+            
+            <div class="code-example">
+&lt;!-- Trigger --&gt;
+&lt;a href="#modal1" class="retro-button"&gt;Open Modal&lt;/a&gt;
+
+&lt;!-- Modal --&gt;
+&lt;div class="retro-modal" id="modal1"&gt;
+    &lt;div class="retro-modal-content"&gt;
+        &lt;div class="retro-modal-header"&gt;
+            &lt;h3 class="retro-modal-title"&gt;Modal Title&lt;/h3&gt;
+            &lt;button class="retro-modal-close"&gt;×&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="retro-modal-body"&gt;
+            &lt;p&gt;Modal content...&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="retro-modal-footer"&gt;
+            &lt;button class="retro-button"&gt;OK&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- JavaScript API --&gt;
+&lt;script&gt;
+    RetroUI.Modal.open('modal1');
+    RetroUI.Modal.close('modal1');
+&lt;/script&gt;
+            </div>
+        </section>
+
+        <!-- Utility Classes Section -->
+        <section class="section">
+            <h2>Utility Classes</h2>
+            <div class="retro-card">
+                <h3>Spacing</h3>
+                <div class="retro-m-1">Margin 1 (4px)</div>
+                <div class="retro-m-2">Margin 2 (8px)</div>
+                <div class="retro-m-3">Margin 3 (16px)</div>
+                <div class="retro-p-3">Padding 3 (16px)</div>
+                
+                <h3>Text Alignment</h3>
+                <div class="retro-text-left">Left aligned text</div>
+                <div class="retro-text-center">Center aligned text</div>
+                <div class="retro-text-right">Right aligned text</div>
+                
+                <h3>Typography</h3>
+                <div class="retro-font">Using retro font</div>
+            </div>
+            
+            <div class="code-example">
+&lt;!-- Spacing --&gt;
+&lt;div class="retro-m-0"&gt;No margin&lt;/div&gt;
+&lt;div class="retro-m-1"&gt;Small margin&lt;/div&gt;
+&lt;div class="retro-m-3"&gt;Medium margin&lt;/div&gt;
+&lt;div class="retro-p-3"&gt;Medium padding&lt;/div&gt;
+
+&lt;!-- Text alignment --&gt;
+&lt;div class="retro-text-center"&gt;Centered text&lt;/div&gt;
+&lt;div class="retro-text-right"&gt;Right aligned&lt;/div&gt;
+
+&lt;!-- Typography --&gt;
+&lt;div class="retro-font"&gt;Retro font&lt;/div&gt;
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="retro-card retro-text-center">
+            <p>🎮 Retro UI - No build step required! Just include and use. 🎮</p>
+            <p>Made with ❤️ for the retro gaming community</p>
+        </footer>
+    </div>
+
+    <!-- Modals -->
+    <div class="retro-modal" id="modal1">
+        <div class="retro-modal-content">
+            <div class="retro-modal-header">
+                <h3 class="retro-modal-title">Example Modal</h3>
+                <button class="retro-modal-close">×</button>
+            </div>
+            <div class="retro-modal-body">
+                <p>This is an example modal using CSS-only approach with <code>:target</code> pseudo-class.</p>
+                <p>It includes focus trapping and keyboard navigation for better accessibility.</p>
+                <button class="retro-button">Some Action</button>
+            </div>
+            <div class="retro-modal-footer">
+                <button class="retro-button secondary" onclick="RetroUI.Modal.close('modal1')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="retro-modal" id="modal2">
+        <div class="retro-modal-content">
+            <div class="retro-modal-header">
+                <h3 class="retro-modal-title">JavaScript Modal</h3>
+                <button class="retro-modal-close">×</button>
+            </div>
+            <div class="retro-modal-body">
+                <p>This modal was opened using JavaScript API:</p>
+                <pre>RetroUI.Modal.open('modal2');</pre>
+            </div>
+            <div class="retro-modal-footer">
+                <button class="retro-button" onclick="RetroUI.Modal.close('modal2')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Theme Modal -->
+    <div class="retro-modal" id="customTheme">
+        <div class="retro-modal-content">
+            <div class="retro-modal-header">
+                <h3 class="retro-modal-title">Custom Theme</h3>
+                <button class="retro-modal-close">×</button>
+            </div>
+            <div class="retro-modal-body">
+                <div class="retro-m-2">
+                    <label for="primaryBg">Primary Background:</label>
+                    <input type="color" id="primaryBg" class="color-input" value="#c381b5">
+                </div>
+                <div class="retro-m-2">
+                    <label for="primaryText">Primary Text:</label>
+                    <input type="color" id="primaryText" class="color-input" value="#fefcd0">
+                </div>
+                <div class="retro-m-2">
+                    <label for="secondaryBg">Secondary Background:</label>
+                    <input type="color" id="secondaryBg" class="color-input" value="#fefcd0">
+                </div>
+                <div class="retro-m-2">
+                    <label for="secondaryText">Secondary Text:</label>
+                    <input type="color" id="secondaryText" class="color-input" value="#000000">
+                </div>
+            </div>
+            <div class="retro-modal-footer">
+                <button class="retro-button" onclick="applyCustomTheme()">Apply</button>
+                <button class="retro-button secondary" onclick="RetroUI.Modal.close('customTheme')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/retro-ui.js"></script>
+    <script>
+        // Theme management
+        const themes = {
+            default: {
+                'primary-bg': '#c381b5',
+                'primary-text': '#fefcd0',
+                'primary-shadow': '#fefcd0',
+                'secondary-bg': '#fefcd0',
+                'secondary-text': '#000000',
+                'secondary-shadow': '#c381b5'
+            },
+            ocean: {
+                'primary-bg': '#2b6cb0',
+                'primary-text': '#ffffff',
+                'primary-shadow': '#90cdf4',
+                'secondary-bg': '#e6fffa',
+                'secondary-text': '#234e52',
+                'secondary-shadow': '#2b6cb0'
+            },
+            forest: {
+                'primary-bg': '#38a169',
+                'primary-text': '#ffffff',
+                'primary-shadow': '#9ae6b4',
+                'secondary-bg': '#f0fff4',
+                'secondary-text': '#22543d',
+                'secondary-shadow': '#38a169'
+            },
+            sunset: {
+                'primary-bg': '#ed8936',
+                'primary-text': '#ffffff',
+                'primary-shadow': '#fbd38d',
+                'secondary-bg': '#fffaf0',
+                'secondary-text': '#7b341e',
+                'secondary-shadow': '#ed8936'
+            }
+        };
+
+        function setTheme(themeName) {
+            if (themes[themeName]) {
+                RetroUI.Theme.setColors(themes[themeName]);
+            }
+        }
+
+        function showCustomTheme() {
+            RetroUI.Modal.open('customTheme');
+        }
+
+        function applyCustomTheme() {
+            const customTheme = {
+                'primary-bg': document.getElementById('primaryBg').value,
+                'primary-text': document.getElementById('primaryText').value,
+                'secondary-bg': document.getElementById('secondaryBg').value,
+                'secondary-text': document.getElementById('secondaryText').value
+            };
+            
+            RetroUI.Theme.setColors(customTheme);
+            RetroUI.Modal.close('customTheme');
+        }
+
+        // Progress bar demo
+        function animateProgress() {
+            const progressBars = document.querySelectorAll('.retro-progress');
+            progressBars.forEach((bar, index) => {
+                const targetValue = Math.floor(Math.random() * 100);
+                RetroUI.ProgressBar.animate(bar, targetValue, 1000);
+            });
+        }
+
+        function resetProgress() {
+            const progressBars = document.querySelectorAll('.retro-progress');
+            progressBars.forEach(bar => {
+                RetroUI.ProgressBar.update(bar, 0);
+            });
+        }
+
+        // Initialize with debug mode
+        RetroUI.init({ debug: true });
+    </script>
+</body>
+</html>
