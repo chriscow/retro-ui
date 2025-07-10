@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Test - Retro UI Vanilla</title>
+    <link rel="stylesheet" href="dist/retro-ui.min.css">
+</head>
+<body class="retro-ui">
+    <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+        <h1 class="retro-text-center">🎮 Quick Test</h1>
+        
+        <div class="retro-card">
+            <h2>Components Test</h2>
+            
+            <div class="retro-m-2">
+                <button class="retro-button">Primary Button</button>
+                <button class="retro-button secondary">Secondary Button</button>
+            </div>
+            
+            <div class="retro-m-2">
+                <input type="text" class="retro-input" placeholder="Test input">
+            </div>
+            
+            <div class="retro-m-2">
+                <div class="retro-progress" style="--progress: 60" data-progress="60"></div>
+            </div>
+            
+            <details class="retro-dropdown">
+                <summary>Test Dropdown</summary>
+                <div class="retro-dropdown-content">
+                    <button class="retro-dropdown-item">Option 1</button>
+                    <button class="retro-dropdown-item">Option 2</button>
+                </div>
+            </details>
+            
+            <details class="retro-accordion-item">
+                <summary>Test Accordion</summary>
+                <div class="retro-accordion-content">
+                    <p>This is accordion content!</p>
+                </div>
+            </details>
+            
+            <div class="retro-m-2">
+                <a href="#test-modal" class="retro-button">Open Modal</a>
+            </div>
+        </div>
+        
+        <div class="retro-card">
+            <h3>✅ Success!</h3>
+            <p>All components are working correctly without any build step.</p>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="retro-modal" id="test-modal">
+        <div class="retro-modal-content">
+            <div class="retro-modal-header">
+                <h3 class="retro-modal-title">Test Modal</h3>
+                <a href="#" class="retro-modal-close">×</a>
+            </div>
+            <div class="retro-modal-body">
+                <p>This modal works with pure CSS using :target pseudo-class!</p>
+                <button class="retro-button" onclick="window.location.hash=''">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="dist/retro-ui.min.js"></script>
+</body>
+</html>

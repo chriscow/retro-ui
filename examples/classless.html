@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro UI - Classless Example</title>
+    
+    <!-- Classless CSS approach -->
+    <link rel="stylesheet" href="../css/retro-ui-classless.css">
+    <link rel="stylesheet" href="../css/retro-ui-components.css">
+    <link rel="stylesheet" href="../css/retro-ui-utilities.css">
+    
+    <style>
+        /* Custom demo styles */
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .demo-section {
+            margin: 2rem 0;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        /* Make header more visually appealing */
+        header h1 {
+            color: var(--retro-primary-bg);
+            text-align: center;
+            margin-bottom: var(--retro-spacing-sm);
+        }
+        
+        header p {
+            text-align: center;
+            margin-top: var(--retro-spacing-sm);
+        }
+        
+        /* Style the nav to look more like a navigation bar */
+        nav {
+            display: flex;
+            align-items: center;
+            gap: var(--retro-spacing-sm);
+            flex-wrap: wrap;
+        }
+        
+        nav h3 {
+            margin: 0;
+            margin-right: var(--retro-spacing-md);
+        }
+        
+        /* Better form layout */
+        .form-row {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+            gap: 24px !important;
+            margin-bottom: 24px !important;
+        }
+        
+        .form-group {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 8px !important;
+        }
+        
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 4px !important;
+            margin-top: 0 !important;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            margin: 0 !important;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .form-actions {
+            margin-top: 24px;
+            display: flex;
+            gap: 16px;
+            justify-content: flex-start;
+        }
+        
+        .form-actions button {
+            margin: 0 !important;
+        }
+        
+        /* Clean form styling */
+        fieldset {
+            padding: 30px !important;
+        }
+        
+        legend {
+            /* Typography and spacing */
+            font-family: var(--retro-font-family) !important;
+            font-weight: bold !important;
+            font-size: 1.1em !important;
+            padding: 8px 16px !important;
+            
+            /* Keep natural legend positioning */
+            margin: 0 !important;
+            position: static !important;
+            top: auto !important;
+            
+            /* Clean text styling with white background that covers border */
+            color: var(--retro-primary-bg) !important;
+            background-color: white !important;
+            position: relative !important;
+            z-index: 1 !important;
+        }
+        
+        /* Specific overrides for form inputs */
+        form input[type="text"],
+        form input[type="email"],
+        form select,
+        form textarea {
+            margin: 0 !important;
+            display: block;
+            width: 100%;
+        }
+        
+        form textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎮 Retro UI - Classless Experience</h1>
+        <p>Pure semantic HTML styled automatically - no classes required!</p>
+    </header>
+
+    <nav>
+        <h3>Navigation</h3>
+        <button>Home</button>
+        <button class="secondary">About</button>
+        <button class="outline">Contact</button>
+    </nav>
+
+    <main>
+        <!-- Typography Section -->
+        <section>
+            <h2>Typography</h2>
+            <p>This paragraph is automatically styled with retro gaming fonts and spacing. You don't need any classes!</p>
+            
+            <h3>All headings get retro styling</h3>
+            <h4>From H1 down to H6</h4>
+            <h5>Consistent hierarchy</h5>
+            <h6>Pixel-perfect typography</h6>
+            
+            <blockquote>
+                This blockquote is automatically styled with retro borders and colors. 
+                Perfect for highlighting important game tips or quotes!
+            </blockquote>
+            
+            <p>Here's some <code>inline code</code> that gets retro styling automatically.</p>
+            
+            <pre>// Block code also gets styling
+function startGame() {
+    console.log("Game started!");
+    return true;
+}</pre>
+        </section>
+
+        <!-- Buttons Section -->
+        <section>
+            <h2>Buttons</h2>
+            <p>All button elements get automatic retro styling:</p>
+            
+            <div class="demo-section">
+                <button>Primary Button</button>
+                <button class="secondary">Secondary Button</button>
+                <button class="outline">Outline Button</button>
+                <button disabled>Disabled Button</button>
+            </div>
+            
+            <div class="demo-section">
+                <button class="small">Small</button>
+                <button>Normal</button>
+                <button class="large">Large</button>
+            </div>
+            
+            <div class="demo-section">
+                <input type="button" value="Input Button">
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+            </div>
+        </section>
+
+        <!-- Forms Section -->
+        <article>
+            <h2>Forms</h2>
+            <p>Form elements get automatic retro styling without any classes:</p>
+            
+            <form>
+                <fieldset>
+                    <legend>Player Information</legend>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="playerName">Player Name:</label>
+                            <input type="text" id="playerName" placeholder="Enter your name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" placeholder="player@game.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="level">Experience Level:</label>
+                            <select id="level">
+                                <option>Beginner</option>
+                                <option>Intermediate</option>
+                                <option>Expert</option>
+                                <option>Master</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bio">Bio:</label>
+                        <textarea id="bio" placeholder="Tell us about your gaming experience..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit">Save Profile</button>
+                        <button type="reset" class="secondary">Reset Form</button>
+                    </div>
+                </fieldset>
+            </form>
+        </article>
+
+        <!-- Interactive Elements -->
+        <section>
+            <h2>Interactive Elements</h2>
+            
+            <h3>Progress</h3>
+            <label for="health">Health:</label>
+            <progress id="health" value="75" max="100">75%</progress>
+            
+            <label for="mana">Mana:</label>
+            <progress id="mana" value="50" max="100">50%</progress>
+            
+            <label for="xp">Experience:</label>
+            <progress id="xp" value="25" max="100">25%</progress>
+
+            <h3>Dropdowns (using details/summary)</h3>
+            <details>
+                <summary>🎮 Game Menu</summary>
+                <div class="retro-dropdown-content">
+                    <div class="retro-dropdown-label">Game Actions</div>
+                    <button class="retro-dropdown-item">New Game</button>
+                    <button class="retro-dropdown-item">Load Game</button>
+                    <button class="retro-dropdown-item">Save Game</button>
+                    <div class="retro-dropdown-separator"></div>
+                    <button class="retro-dropdown-item">Settings</button>
+                    <button class="retro-dropdown-item">Quit</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>⚔️ Inventory</summary>
+                <div class="retro-dropdown-content">
+                    <button class="retro-dropdown-item">🗡️ Iron Sword</button>
+                    <button class="retro-dropdown-item">🛡️ Wooden Shield</button>
+                    <button class="retro-dropdown-item">🧪 Health Potion</button>
+                    <button class="retro-dropdown-item">🔮 Magic Crystal</button>
+                </div>
+            </details>
+
+            <h3>Accordions</h3>
+            <details class="retro-accordion-item">
+                <summary>🏰 Game Story</summary>
+                <div class="retro-accordion-content">
+                    <p>In a land far away, a brave hero must embark on an epic quest to save the kingdom from an ancient evil...</p>
+                    <p>Your adventure begins in the small village of Pixelton, where mysterious forces have been stirring.</p>
+                </div>
+            </details>
+
+            <details class="retro-accordion-item">
+                <summary>🎯 Game Objectives</summary>
+                <div class="retro-accordion-content">
+                    <ul>
+                        <li>Collect 10 magic crystals</li>
+                        <li>Defeat the Shadow Dragon</li>
+                        <li>Restore peace to the kingdom</li>
+                        <li>Unlock all secret areas</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="retro-accordion-item">
+                <summary>🎮 Controls</summary>
+                <div class="retro-accordion-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Key</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>WASD</code></td>
+                                <td>Move character</td>
+                            </tr>
+                            <tr>
+                                <td><code>SPACE</code></td>
+                                <td>Jump</td>
+                            </tr>
+                            <tr>
+                                <td><code>E</code></td>
+                                <td>Interact</td>
+                            </tr>
+                            <tr>
+                                <td><code>ESC</code></td>
+                                <td>Pause menu</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+        </section>
+
+        <!-- Layout Examples -->
+        <div class="demo-grid">
+            <article>
+                <h3>Player Stats</h3>
+                <p><strong>Level:</strong> 42</p>
+                <p><strong>Health:</strong> 100/100</p>
+                <p><strong>Mana:</strong> 75/100</p>
+                <p><strong>Gold:</strong> 1,337</p>
+                <button>Level Up</button>
+            </article>
+
+            <aside>
+                <h3>Quick Actions</h3>
+                <p>Common game actions:</p>
+                <button class="w-full mb-2">Save Game</button>
+                <button class="w-full mb-2 secondary">Settings</button>
+                <button class="w-full outline">Help</button>
+            </aside>
+
+            <section>
+                <h3>Recent Achievements</h3>
+                <ul>
+                    <li>🏆 First Steps - Complete tutorial</li>
+                    <li>⚔️ Warrior - Win 10 battles</li>
+                    <li>💰 Collector - Gather 100 gold</li>
+                    <li>🔮 Mystic - Learn 5 spells</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Mixed Approaches -->
+        <section>
+            <h2>Mixed Approaches</h2>
+            <p>You can combine semantic HTML with utility classes for fine-tuning:</p>
+            
+            <article class="highlight">
+                <h3>Important Notice</h3>
+                <p>This article uses the <code>highlight</code> class for special styling, but the base styling comes from the semantic <code>&lt;article&gt;</code> element.</p>
+                <button>Acknowledge</button>
+            </article>
+            
+            <div class="flex justify-between items-center mt-4">
+                <div>
+                    <h4 class="text-primary">Flexible Layout</h4>
+                    <p class="text-muted">Using utility classes with semantic elements</p>
+                </div>
+                <button class="secondary">Action</button>
+            </div>
+        </section>
+
+        <!-- Comparison Section -->
+        <section>
+            <h2>📊 Comparison</h2>
+            
+            <div class="demo-grid">
+                <article>
+                    <h3>❌ Old Way (Class-Heavy)</h3>
+                    <pre>&lt;div class="retro-card"&gt;
+  &lt;h3 class="retro-heading"&gt;Title&lt;/h3&gt;
+  &lt;p class="retro-text"&gt;Content&lt;/p&gt;
+  &lt;button class="retro-button"&gt;Action&lt;/button&gt;
+&lt;/div&gt;</pre>
+                </article>
+
+                <article class="highlight">
+                    <h3>✅ New Way (Semantic)</h3>
+                    <pre>&lt;article&gt;
+  &lt;h3&gt;Title&lt;/h3&gt;
+  &lt;p&gt;Content&lt;/p&gt;
+  &lt;button&gt;Action&lt;/button&gt;
+&lt;/article&gt;</pre>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <h3>🎮 Retro UI Classless</h3>
+        <p>Semantic HTML with automatic retro styling - just like PicoCSS but with gaming aesthetics!</p>
+        <p class="text-center">
+            <a href="../examples/index.html">View Class-Based Examples</a> |
+            <a href="../test.html">Quick Test</a> |
+            <a href="https://github.com/your-repo/retro-ui-vanilla">GitHub</a>
+        </p>
+    </footer>
+
+    <script src="../js/retro-ui.js"></script>
+    <script>
+        // Demo functionality
+        console.log('🎮 Retro UI Classless demo loaded!');
+        
+        // Add some interactive demo features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-update progress bars
+            setInterval(function() {
+                const progressBars = document.querySelectorAll('progress');
+                progressBars.forEach(function(bar) {
+                    const currentValue = parseInt(bar.value);
+                    const maxValue = parseInt(bar.max);
+                    const newValue = Math.min(maxValue, currentValue + Math.random() * 5);
+                    bar.value = newValue;
+                });
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{
+  "name": "retro-ui-vanilla",
+  "version": "1.0.0",
+  "description": "A pixel-perfect retro gaming UI library that works without any build step",
+  "main": "js/retro-ui.js",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "python -m http.server 8080 || python3 -m http.server 8080",
+    "serve": "python -m http.server 8080 || python3 -m http.server 8080"
+  },
+  "keywords": [
+    "retro",
+    "ui",
+    "vanilla",
+    "css",
+    "javascript",
+    "pixel",
+    "gaming",
+    "no-build",
+    "framework-agnostic"
+  ],
+  "author": "RetroUI Vanilla Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chriscow/retro-ui.git"
+  },
+  "homepage": "https://github.com/chriscow/retro-ui#readme",
+  "bugs": {
+    "url": "https://github.com/chriscow/retro-ui/issues"
+  },
+  "files": [
+    "css/",
+    "js/",
+    "fonts/",
+    "dist/",
+    "examples/",
+    "README.md",
+    "CDN.md"
+  ],
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "browserslist": [
+    "Chrome >= 60",
+    "Firefox >= 55",
+    "Safari >= 12",
+    "Edge >= 79"
+  ]
+}
