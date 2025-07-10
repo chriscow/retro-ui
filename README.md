@@ -12,6 +12,8 @@ A pixel-perfect retro gaming UI library that works without any build step! Just 
 
 This vanilla JavaScript implementation was inspired by and ported from the original [RetroUI](https://github.com/Dksie09/RetroUI) React component library created by [@Dksie09](https://github.com/Dksie09). This version provides the same retro gaming aesthetic without requiring React, build tools, or any dependencies - just pure HTML, CSS, and optional JavaScript.
 
+The **classless/semantic approach** was inspired by [PicoCSS](https://picocss.com/) - a minimal CSS framework that styles semantic HTML without classes. We've applied this elegant philosophy to retro gaming interfaces, giving you the best of both worlds: semantic HTML and pixel-perfect retro styling.
+
 ## 🎮 Live Demo
 
 - **[Full Demo](examples/index.html)** - Open `examples/index.html` in your browser
@@ -168,7 +170,7 @@ That's it! Pure semantic HTML with automatic retro styling. No npm install, no b
 | `<button>Click me</button>` | `<button class="retro-button">Click me</button>` |
 | `<article>Content</article>` | `<div class="retro-card">Content</div>` |
 | `<input type="text">` | `<input type="text" class="retro-input">` |
-| **Like PicoCSS** | **Like Bootstrap/Tailwind** |
+| **Like [PicoCSS](https://picocss.com/)** | **Like Bootstrap/Tailwind** |
 | **Automatic styling** | **Explicit control** |
 
 ### Quick Demo
@@ -181,7 +183,7 @@ That's it! Pure semantic HTML with automatic retro styling. No npm install, no b
 ### Which Approach Should I Choose?
 
 #### 🎯 **Choose Classless If:**
-- You like PicoCSS's approach
+- You like [PicoCSS](https://picocss.com/)'s approach
 - You want minimal HTML
 - You prefer semantic markup
 - You're building simple to medium projects
@@ -580,6 +582,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ### Original Work Attribution
 
 This implementation is based on the original [RetroUI](https://github.com/Dksie09/RetroUI) by [@Dksie09](https://github.com/Dksie09), which is licensed under the BSD 3-Clause License. The original copyright notice is preserved in compliance with the BSD license terms.
+
+The classless/semantic HTML approach is inspired by [PicoCSS](https://picocss.com/) by [@lucasburlingham](https://github.com/lucasburlingham) - a beautiful minimal CSS framework that demonstrates the power of styling semantic HTML without classes.
 
 ## 🤝 Contributing
 

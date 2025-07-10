@@ -35,3 +35,11 @@ The original RetroUI project provided the design inspiration, component concepts
 and visual styling that this vanilla JavaScript implementation is based upon.
 This vanilla version was created to provide the same retro gaming aesthetic 
 without requiring React, build tools, or dependencies.
+
+The classless/semantic HTML approach is inspired by PicoCSS:
+https://picocss.com/
+Copyright (c) 2019-2024 Lucas Burlingham
+Licensed under the MIT License
+
+PicoCSS demonstrated the elegant philosophy of styling semantic HTML without classes,
+which we've applied to retro gaming interfaces.
